@@ -85,6 +85,8 @@ class Dog
     breed = row[2]
 
     dog = Dog.new(id: id, name: name, breed: breed)
+    dog.save
+    dog
   end
 
   def self.find_by_name(search_name)
