@@ -82,7 +82,21 @@ class Dog
   def self.new_from_db
   end
 
-  def self.find_by_name()
+  def self.find_by_name(search_name)
+    sql = <<-SQL
+      SELECT *
+      FROM dogs
+      WHERE name = ?
+    SQL
+
+    dog_arr = DB[:conn].execute(sql, search_name)
+    dog_arr.flatten!
+    id = dog_arr[0]
+    name = dog_arr[1]
+    breed = dog_arr[2]
+
+    dog = Dog.new(id: id, name: name, breed: breed)
+    dog
   end
 
   def update
