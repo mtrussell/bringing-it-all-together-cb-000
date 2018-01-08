@@ -51,6 +51,7 @@ class Dog
     dog = Dog.new(name: name, breed: breed)
 
     dog.save
+    dog
   end
 
   def self.find_by_id(search_id)
@@ -70,11 +71,11 @@ class Dog
     dog
   end
 
-  def self.find_or_create_by(search_id)
+  def self.find_or_create_by(dog_hash)
     if self.id
       self.find_by_id(search_id)
     else
-      
+      dog = self.create(dog_hash)
     end
   end
 
