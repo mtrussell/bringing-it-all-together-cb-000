@@ -40,7 +40,7 @@ class Dog
       DB[:conn].execute(sql, self.name, self.breed)
       @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
     end
-    
+
     self
   end
 
@@ -68,7 +68,7 @@ class Dog
   end
 
   def self.find_or_create_by(name:, breed:)
-    dog_db = DB[:conn].execute("SELECT * FROM dog WHERE name = ? AND breed = ?", name, breed)
+    dog_db = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
 
     if !dog_db.empty?
       dog_db.flatten!
