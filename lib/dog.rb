@@ -77,6 +77,8 @@ class Dog
     else
       dog = self.create(dog_hash)
     end
+
+    dog
   end
 
   def self.new_from_db
